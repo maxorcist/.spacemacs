@@ -54,7 +54,7 @@ values."
      ;; (org :variables
           ;; org-enable-github-support t
           ;; org-enable-reveal-js-support t)
-     neotree
+     ;; neotree
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-height 30
@@ -64,8 +64,9 @@ values."
      ;; version-control :variables
             ;; version-control-diff-tool 'diff-hl
             ;; version-control-global-margin t)
-     (clojure :variables
-            clojure-enable-fancify-symbols t)
+     clojure
+     ;; (clojure :variables
+            ;; clojure-enable-fancify-symbols t)
      html
      javascript
      (c-c++ :variables
@@ -335,7 +336,7 @@ you should place your code here."
                '("\\.php\\'" . web-mode)
                '("\\.blade.php\\'" . web-mode))
 
-  ;; (global-set-key (kbd "C-m") 'beginning-of-line-text)
+  (setq helm-ag-base-command "D:\\programs\\silver_searcher_ag\\ag --vimgrep")
 
   (global-set-key (kbd "<mouse-2>") 'x-clipboard-yank)
   (put 'downcase-region 'disabled nil)
@@ -369,6 +370,8 @@ you should place your code here."
   ;; Holy mode for repl
   (with-eval-after-load 'evil
     (evil-set-initial-state 'cider-repl-mode 'emacs))
+
+  (global-set-key  (kbd "§") 'lisp-state-toggle-lisp-state)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
