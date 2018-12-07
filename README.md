@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     markdown
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -372,6 +373,14 @@ you should place your code here."
     (evil-set-initial-state 'cider-repl-mode 'emacs))
 
   (global-set-key  (kbd "§") 'lisp-state-toggle-lisp-state)
+
+  ;; dummy silence definition
+  (defun silence ()
+    (interactive))
+  ;; don't jump the cursor around in the window on clicking
+  (define-key evil-motion-state-map [down-mouse-1] 'silence)
+  ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
+  (define-key evil-motion-state-map [mouse-1] 'silence)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -385,9 +394,9 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (disaster company-c-headers cmake-mode clang-format xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help rainbow-mode rainbow-identifiers magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht color-identifiers-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern dash-functional tern company-quickhelp coffee-mode clojure-snippets clj-refactor inflections edn multiple-cursors peg cider-eval-sexp-fu cider seq queue clojure-mode drupal-mode company-web web-mode tagedit slim-mode scss-mode sass-mode pug-mode phpunit phpcbf php-auto-yasnippets less-css-mode helm-css-scss haml-mode emmet-mode php-mode web-completion-data git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip pos-tip flycheck diff-hl unfill smeargle orgit mwim magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor paredit helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag ace-jump-helm-line fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
+    (mmm-mode markdown-toc markdown-mode gh-md disaster company-c-headers cmake-mode clang-format xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help rainbow-mode rainbow-identifiers magit-gh-pulls github-search github-clone github-browse-file gist gh marshal logito pcache ht color-identifiers-mode web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern dash-functional tern company-quickhelp coffee-mode clojure-snippets clj-refactor inflections edn multiple-cursors peg cider-eval-sexp-fu cider seq queue clojure-mode drupal-mode company-web web-mode tagedit slim-mode scss-mode sass-mode pug-mode phpunit phpcbf php-auto-yasnippets less-css-mode helm-css-scss haml-mode emmet-mode php-mode web-completion-data git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip pos-tip flycheck diff-hl unfill smeargle orgit mwim magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit ghub let-alist with-editor paredit helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag ace-jump-helm-line fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
  '(projectile-enable-caching t)
- '(projectile-indexing-method (quote native) t)
+ '(projectile-indexing-method (quote native))
  '(shell-file-name "D:/Programs/Git/bin/bash"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
