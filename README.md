@@ -373,8 +373,10 @@ you should place your code here."
   ;; Holy mode for repl
   (with-eval-after-load 'evil
     (evil-set-initial-state 'cider-repl-mode 'emacs))
-
+  
+  ;; Cider tests
   (setq cider-test-show-report-on-success t)
+  (setq cider-test-infer-test-ns (lambda (ns) ns))
 
   (global-set-key  (kbd "§") 'lisp-state-toggle-lisp-state)
 
